@@ -1,0 +1,41 @@
+{
+  "name": "server-logux",
+  "private": true,
+  "main": "src/index.js",
+  "author": {
+    "name": "Dmitry",
+    "email": "bobrov@ttfb.dev"
+  },
+  "contributors": [
+    {
+      "name": "Dmitry",
+      "email": "bobrov@ttfb.dev"
+    }
+  ],
+  "scripts": {
+    "start": "node --experimental-specifier-resolution=node src/index.js",
+    "lint": "run-s lint:all:*",
+    "lint:eslint": "eslint --fix",
+    "lint:prettier": "prettier --write --loglevel warn",
+    "lint:all:eslint": "yarn lint:eslint \"src/**/*.+(js|ts)\"",
+    "lint:all:prettier": "yarn lint:prettier \"src/**/*.+(js|ts|json|md)\"",
+    "update:deps": "yarn upgrade-interactive --latest && yarn upgrade"
+  },
+  "dependencies": {
+    "@logux/server": "^0.10.1",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "eslint": "^7.29.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-import": "^2.23.4",
+    "eslint-plugin-prettier": "^3.4.0",
+    "eslint-plugin-simple-import-sort": "^7.0.0",
+    "lint-staged": "^11.0.0",
+    "npm-run-all": "^4.1.5",
+    "prettier": "^2.3.1",
+    "simple-git-hooks": "^2.4.1"
+  }
+}
