@@ -12,5 +12,5 @@ services:
       context: .
       dockerfile: ./build/nodejs/Dockerfile
     restart: 'always'
-    image: registry.gitlab.com/robots-miniapp/robots-logux-proxy:nodejs_14
+    image: registry.gitlab.com/robots-miniapp/logux-proxy:nodejs_14
     env_file: ./build/.env.list
