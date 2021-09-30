@@ -10,7 +10,7 @@ const general = (server) => {
       const name = getRandomName();
 
       ctx.sendBack({
-        type: 'profile/get_random_name_success',
+        type: 'general/get_random_name_success',
         name,
       });
     },
