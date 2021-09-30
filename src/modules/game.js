@@ -8,12 +8,10 @@ const profile = (server) => {
     async process(ctx, action, meta) {
       const userId = parseInt(ctx.userId, 10);
 
-      const battle_id = 1;
-
-      const data = await api.startBattle(userId);
+      const { battle_id, state } = await api.startBattle(userId);
 
       console.log('got from api');
-      console.log(data);
+      console.log({battle_id, state});
 
       ctx.sendBack({
         type: 'game/start_success',
