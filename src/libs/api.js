@@ -25,7 +25,7 @@ class Api {
 
       return await response.json();
     } catch (error) {
-      console.critical(error.message, {
+      console.error(error.message, {
         method,
         path,
       });
@@ -49,7 +49,7 @@ class Api {
 
       return true;
     } catch (error) {
-      console.critical(error.message, {
+      console.error(error.message, {
         method,
         path,
         data,
