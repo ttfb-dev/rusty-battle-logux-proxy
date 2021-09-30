@@ -20,15 +20,13 @@ const profile = (server) => {
 
         const { modules, round_number } = await api.getRandomModules(battle_id, userId);
 
-        const data = await api.getUserRobot(battle_id, userId);
-
-        console.log(data);
+        const robot = await api.getUserRobot(battle_id, userId);
 
         ctx.sendBack({
           type: 'game/shuffle_set',
           modules,
           round: round_number,
-          robot: data,
+          robot,
         });
       } catch ({message}) {
         console.error(message)
@@ -49,7 +47,7 @@ const profile = (server) => {
 
       const { modules, round_number } = await api.getRandomModules(battle_id, userId);
 
-      const { robot } = await api.getUserRobot(battle_id, userId);
+      const robot = await api.getUserRobot(battle_id, userId);
 
       ctx.sendBack({
         type: 'game/shuffle_set',
