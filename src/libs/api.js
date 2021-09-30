@@ -24,7 +24,7 @@ class Api {
 
   async getRandomModules(battleId, userId) {
     return await this.get({
-      path: `/api/modules/select?user_id=${userId}&battle_id=${battleId}`
+      path: `/api/modules?user_id=${userId}&battle_id=${battleId}`
     })
   }
 
