@@ -16,16 +16,21 @@ const profile = (server) => {
         state,
       });
 
-      const { modules, round_number } = await api.getRandomModules(battle_id, userId);
+      try {
 
-      const { robot } = await api.getUserRobot(battle_id, userId);
+        const { modules, round_number } = await api.getRandomModules(battle_id, userId);
 
-      ctx.sendBack({
-        type: 'game/shuffle_set',
-        modules,
-        round: round_number,
-        robot,
-      });
+        const { robot } = await api.getUserRobot(battle_id, userId);
+
+        ctx.sendBack({
+          type: 'game/shuffle_set',
+          modules,
+          round: round_number,
+          robot,
+        });
+      } catch ({message}) {
+        console.error(message)
+      }
     },
   });
 
