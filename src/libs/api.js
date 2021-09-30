@@ -18,7 +18,7 @@ class Api {
 
   async get({ path, method = null }) {
     try {
-      const response = await fetch(path);
+      const response = await fetch(this.host + path);
       if (!response.ok) {
         throw new Error(`Response status is not OK: ${response.status}`);
       }
@@ -35,7 +35,7 @@ class Api {
 
   async post({ path, data, method = null }) {
     try {
-      const response = await fetch(path, {
+      const response = await fetch(this.host + path, {
         method: "post",
         body: JSON.stringify(data),
         headers: {
