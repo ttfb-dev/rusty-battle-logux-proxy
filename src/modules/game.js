@@ -10,15 +10,48 @@ const profile = (server) => {
 
       const { battle_id, state } = await api.startBattle(userId);
 
-      console.log('got from api');
-      console.log({battle_id, state});
-
       ctx.sendBack({
         type: 'game/start_success',
         battle_id,
+        state,
+      });
+
+      const { modules, round_number } = await api.getRandomModules(battle_id, userId);
+
+      const { robot } = await api.getUserRobot(battle_id, userId);
+
+      ctx.sendBack({
+        type: 'game/shuffle_set',
+        modules,
+        round: round_number,
+        robot,
       });
     },
   });
+
+  server.type('game/module_set', {
+    async access(ctx, action, meta) {
+      return true;
+    },
+    async process(ctx, action, meta) {
+      const userId = parseInt(ctx.userId, 10);
+      const battle_id = parseInt(action.battle_id, 10);
+      const {module_id, slot} = action;
+
+      await api.setModule(battle_id, userId, module_id, slot);
+
+      const { modules, round_number } = await api.getRandomModules(battle_id, userId);
+
+      const { robot } = await api.getUserRobot(battle_id, userId);
+
+      ctx.sendBack({
+        type: 'game/shuffle_set',
+        modules,
+        round: round_number,
+        robot,
+      });
+    }
+  })
 };
 
 export default profile;
