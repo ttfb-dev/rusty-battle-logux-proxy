@@ -47,7 +47,7 @@ class Api {
         throw new Error(`Response status is not OK: ${response.status}`);
       }
 
-      return true;
+      return await response.json();
     } catch (error) {
       console.error(error.message, {
         method,
