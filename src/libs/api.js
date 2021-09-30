@@ -24,7 +24,7 @@ class Api {
 
   async getBossRobot(battleId, userId) {
     return await this.get({
-      path: `/api/battle/boss?user_id=${userId}&battle_id=${battleId}`
+      path: `/api/battle/robot-boss?user_id=${userId}&battle_id=${battleId}`
     })
   }
 
@@ -46,7 +46,7 @@ class Api {
 
   async startFight(battleId, userId) {
     return await this.post({
-      path: `/api/battle/fight?user_id=${userId}&battle_id=${battleId}`
+      path: `/api/battle/fight-start?user_id=${userId}&battle_id=${battleId}`
     })
   }
 
