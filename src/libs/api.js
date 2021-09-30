@@ -22,6 +22,12 @@ class Api {
     })
   }
 
+  async getBossRobot(battleId, userId) {
+    return await this.get({
+      path: `/api/battle/boss?user_id=${userId}&battle_id=${battleId}`
+    })
+  }
+
   async getRandomModules(battleId, userId) {
     return await this.get({
       path: `/api/modules?user_id=${userId}&battle_id=${battleId}`
@@ -35,6 +41,12 @@ class Api {
         module,
         slot
       }
+    })
+  }
+
+  async startFight(battleId, userId) {
+    return await this.post({
+      path: `/api/battle/fight?user_id=${userId}&battle_id=${battleId}`
     })
   }
 
