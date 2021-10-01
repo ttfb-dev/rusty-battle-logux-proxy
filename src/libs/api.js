@@ -54,7 +54,7 @@ class Api {
     return await this.post({
       path: `/api/battle/fight-step?user_id=${userId}&battle_id=${battleId}`,
       data: {
-        module_ids: moduleIds
+        modules: moduleIds
       }
     })
   }
