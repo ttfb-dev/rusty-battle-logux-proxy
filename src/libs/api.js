@@ -63,6 +63,7 @@ class Api {
     try {
       const response = await fetch(this.host + path);
       if (!response.ok) {
+        console.log((await response.json()));
         throw new Error(`Response status is not OK: ${response.status}`);
       }
 
@@ -70,8 +71,7 @@ class Api {
     } catch (error) {
       console.error(error.message, {
         method,
-        path,
-        message: await response.json(),
+        path
       });
       return;
     }
@@ -88,6 +88,7 @@ class Api {
       });
 
       if (!response.ok) {
+        console.log((await response.json()));
         throw new Error(`Response status is not OK: ${response.status}`);
       }
 
@@ -96,8 +97,7 @@ class Api {
       console.error(error.message, {
         method,
         path,
-        data,
-        message: await response.json(),
+        data
       });
 
       return false;
