@@ -84,7 +84,7 @@ const profile = (server) => {
       const battle_id = parseInt(action.battle_id, 10);
       const { module_ids } = action;
 
-      const { state: status, log } = await api.stepFight(battle_id, userId, module_ids);
+      const { state: status, log, winner } = await api.stepFight(battle_id, userId, module_ids);
 
       const boss = await api.getBossRobot(battle_id, userId);
       const robot = await api.getUserRobot(battle_id, userId);
@@ -95,6 +95,7 @@ const profile = (server) => {
         log,
         robot,
         boss,
+        winner,
       });
     }
   })
