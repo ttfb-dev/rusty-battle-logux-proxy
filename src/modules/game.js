@@ -74,6 +74,29 @@ const profile = (server) => {
       });
     }
   })
+
+  server.type('game/fight_step', {
+    async access(ctx, action, meta) {
+      return true;
+    },
+    async process(ctx, action, meta) {
+      const userId = parseInt(ctx.userId, 10);
+      const battle_id = parseInt(action.battle_id, 10);
+      const { module_ids } = action;
+
+      const { state: status } = await api.stepFight(battle_id, userId, module_ids);
+
+      const boss = await api.getBossRobot(battle_id, userId);
+      const robot = await api.getUserRobot(battle_id, userId);
+
+      ctx.sendBack({
+        type: 'game/start_fight_success',
+        status,
+        robot,
+        boss,
+      });
+    }
+  })
 };
 
 export default profile;

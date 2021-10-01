@@ -50,6 +50,15 @@ class Api {
     })
   }
 
+  async stepFight(battleId, userId, moduleIds) {
+    return await this.post({
+      path: `/api/battle/fight-step?user_id=${userId}&battle_id=${battleId}`,
+      data: {
+        module_ids: moduleIds
+      }
+    })
+  }
+
   async get({ path, method = null }) {
     try {
       const response = await fetch(this.host + path);
