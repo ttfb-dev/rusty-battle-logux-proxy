@@ -71,6 +71,7 @@ class Api {
       console.error(error.message, {
         method,
         path,
+        message: await response.json(),
       });
       return;
     }
@@ -96,6 +97,7 @@ class Api {
         method,
         path,
         data,
+        message: await response.json(),
       });
 
       return false;
