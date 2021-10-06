@@ -9,7 +9,7 @@ const profile = (server) => {
     async process(ctx, action, meta) {
       const userId = parseInt(ctx.userId, 10);
 
-      const { battle_id, state: status } = await api.startBattle(userId);
+      const { battle_id, status } = await api.startBattle(userId);
 
       ctx.sendBack({
         type: 'game/start_success',
@@ -64,7 +64,7 @@ const profile = (server) => {
       const userId = parseInt(ctx.userId, 10);
       const battle_id = parseInt(action.battle_id, 10);
       
-      const { state: status } = await api.startFight(battle_id, userId);
+      const { status } = await api.startFight(battle_id, userId);
 
       const boss = await api.getBossRobot(battle_id, userId);
 
@@ -85,7 +85,7 @@ const profile = (server) => {
       const battle_id = parseInt(action.battle_id, 10);
       const { module_ids } = action;
 
-      const { state: status, log, winner } = await api.stepFight(battle_id, userId, module_ids);
+      const { status, log, winner } = await api.stepFight(battle_id, userId, module_ids);
 
       const boss = await api.getBossRobot(battle_id, userId);
       const robot = await api.getUserRobot(battle_id, userId);
