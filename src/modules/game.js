@@ -1,4 +1,5 @@
-import api from '../libs/api'
+// import api from '../libs/api'
+import api from '../libs/apiv2'
 
 const profile = (server) => {
   server.type('game/start', {
