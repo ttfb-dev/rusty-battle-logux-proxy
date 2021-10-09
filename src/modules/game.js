@@ -37,9 +37,9 @@ const profile = (server) => {
     async process(ctx, action, meta) {
       const userId = parseInt(ctx.userId, 10);
       const battle_id = parseInt(action.battle_id, 10);
-      const {module_id, slot, current_round_number} = action;
+      const {module, slot, current_round_number} = action;
 
-      await api.setModule(battle_id, userId, module_id, slot);
+      await api.setModule(battle_id, userId, module, slot);
 
       if (current_round_number < 10) {
         const { modules, round_number } = await api.getRandomModules(battle_id, userId);
