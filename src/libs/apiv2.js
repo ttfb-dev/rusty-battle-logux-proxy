@@ -50,11 +50,11 @@ class Api {
     })
   }
 
-  async stepFight(battleId, userId, moduleIds) {
+  async stepFight(battleId, userId, modules_ids) {
     return await this.post({
       path: `/v1/battle/${battleId}/fight-round?source=vk&user_id=${userId}`,
       data: {
-        module_ids: moduleIds
+        modules_ids: modules_ids
       }
     })
   }
