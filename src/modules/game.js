@@ -18,7 +18,7 @@ const profile = (server) => {
       if (status === 'arming') {
         const shuffle = await api.getRandomModules(battle_id, userId);
         modules = shuffle.modules;
-        arming_round_number = shuffle.modules;
+        arming_round_number = shuffle.round_number;
       }
 
       const boss = await api.getBossRobot(battle_id, userId);
