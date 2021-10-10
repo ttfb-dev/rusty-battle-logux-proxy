@@ -3,6 +3,39 @@ import api from '../libs/apiv2'
 
 const profile = (server) => {
 
+  server.type('game/load', {
+    async access(ctx, action, meta) {
+      return true;
+    },
+    async process(ctx, action, meta) {
+      const userId = parseInt(ctx.userId, 10);
+      const battle_id = parseInt(action.battle_id, 10);
+
+      const { status } = await api.whereIAm(userId);
+
+      let modules, arming_round_number;
+
+      if (status === 'arming') {
+        const shuffle = await api.getRandomModules(battle_id, userId);
+        modules = shuffle.modules;
+        arming_round_number = shuffle.modules;
+      }
+
+      const boss = await api.getBossRobot(battle_id, userId);
+      const robot = await api.getUserRobot(battle_id, userId);
+
+      ctx.sendBack({
+        type: 'game/load_success',
+        battle_id,
+        status,
+        modules,
+        arming_round_number,
+        boss,
+        robot,
+      });
+    },
+  })
+
   server.type('game/where_i_am', {
     async access(ctx, action, meta) {
       return true;
