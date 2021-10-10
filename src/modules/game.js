@@ -11,6 +11,7 @@ const profile = (server) => {
       const userId = parseInt(ctx.userId, 10);
 
       const { battle_id, status } = await api.whereIAm(userId);
+      console.log({battle_id, status})
 
       ctx.sendBack({
         type: 'game/where_i_am_success',
@@ -30,6 +31,7 @@ const profile = (server) => {
       await api.forceFinish(userId);
 
       const { battle_id, status } = await api.whereIAm(userId);
+      console.log({battle_id, status})
 
       ctx.sendBack({
         type: 'game/force_finish_success',
