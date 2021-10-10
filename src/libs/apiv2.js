@@ -67,7 +67,7 @@ class Api {
   }
 
   async forceFinish(battleId, userId) {
-    return await this.get({
+    return await this.post({
       path: `/v1/battle/${battleId}/force-finish?source=${this.source}&user_id=${userId}`,
     })
   }
