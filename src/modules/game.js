@@ -59,9 +59,9 @@ const profile = (server) => {
     },
     async process(ctx, action, meta) {
       const userId = parseInt(ctx.userId, 10);
-      const battleId = parseInt(action.battle_id, 10);
+      const finishingBattleId = parseInt(action.battle_id, 10);
 
-      await api.forceFinish(battleId, userId);
+      await api.forceFinish(finishingBattleId, userId);
 
       const { battle_id, status } = await api.whereIAm(userId);
 
