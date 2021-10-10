@@ -4,11 +4,12 @@ class Api {
 
   constructor () {
     this.host = 'http://rusty-api-nginx';
+    this.source = 'vk'
   }
 
   async startBattle(userId) {
     return await this.post({
-      path: '/v1/battle?source=vk',
+      path: `/v1/battle?source=${this.source}`,
       data: {
         user_ids: [userId]
       },
@@ -18,25 +19,25 @@ class Api {
 
   async getUserRobot(battleId, userId) {
     return await this.get({
-      path: `/v1/battle/${battleId}/robot?source=vk&user_id=${userId}`
+      path: `/v1/battle/${battleId}/robot?source=${this.source}&user_id=${userId}`
     })
   }
 
   async getBossRobot(battleId, userId) {
     return await this.get({
-      path: `/v1/battle/${battleId}/core-robot?source=vk&user_id=${userId}`
+      path: `/v1/battle/${battleId}/core-robot?source=${this.source}&user_id=${userId}`
     })
   }
 
   async getRandomModules(battleId, userId) {
     return await this.get({
-      path: `/v1/battle/${battleId}/arming-round?source=vk&user_id=${userId}`
+      path: `/v1/battle/${battleId}/arming-round?source=${this.source}&user_id=${userId}`
     })
   }
 
   async setModule(battleId, userId, module, slot) {
     return await this.post({
-      path: `/v1/battle/${battleId}/arming-round?source=vk&user_id=${userId}`,
+      path: `/v1/battle/${battleId}/arming-round?source=${this.source}&user_id=${userId}`,
       data: {
         module,
         slot
@@ -46,16 +47,28 @@ class Api {
 
   async startFight(battleId, userId) {
     return await this.post({
-      path: `/v1/battle/${battleId}/finish-arming?source=vk&user_id=${userId}`
+      path: `/v1/battle/${battleId}/finish-arming?source=${this.source}&user_id=${userId}`
     })
   }
 
   async stepFight(battleId, userId, modules_ids) {
     return await this.post({
-      path: `/v1/battle/${battleId}/fight-round?source=vk&user_id=${userId}`,
+      path: `/v1/battle/${battleId}/fight-round?source=${this.source}&user_id=${userId}`,
       data: {
         modules_ids: modules_ids
       }
+    })
+  }
+
+  async whereIAm(userId) {
+    return await this.get({
+      path: `/v1/battle/where-i-am?source=${this.source}&user_id=${userId}`,
+    })
+  }
+
+  async forceFinish(battleId, userId) {
+    return await this.get({
+      path: `/v1/battle/${battleId}/force-finish?source=${this.source}&user_id=${userId}`,
     })
   }
 

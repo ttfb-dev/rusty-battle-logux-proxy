@@ -2,6 +2,43 @@
 import api from '../libs/apiv2'
 
 const profile = (server) => {
+
+  server.type('game/where_i_am', {
+    async access(ctx, action, meta) {
+      return true;
+    },
+    async process(ctx, action, meta) {
+      const userId = parseInt(ctx.userId, 10);
+
+      const { battle_id, status } = await api.whereIAm(userId);
+
+      ctx.sendBack({
+        type: 'game/where_i_am_success',
+        battle_id,
+        status,
+      });
+    },
+  })
+
+  server.type('game/force_finish', {
+    async access(ctx, action, meta) {
+      return true;
+    },
+    async process(ctx, action, meta) {
+      const userId = parseInt(ctx.userId, 10);
+
+      await api.forceFinish(userId);
+
+      const { battle_id, status } = await api.whereIAm(userId);
+
+      ctx.sendBack({
+        type: 'game/force_finish_success',
+        battle_id,
+        status,
+      });
+    },
+  })
+
   server.type('game/start', {
     async access(ctx, action, meta) {
       return true;
