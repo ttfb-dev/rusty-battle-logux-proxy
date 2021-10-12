@@ -1,18 +1,30 @@
 stages:
+  - build
   - production
 
-before_script:
-  - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
+image: docker:git
+services:
+  - docker:dind
+variables:
+  DOCKER_DRIVER: overlay2
+  DOCKER_HOST: tcp://localhost:2375
+  DOCKER_TLS_CERTDIR: ""
 
-build_images:
-  image: docker/compose:latest
-  stage: production
+build_images_for_k8s:
+  stage: build
   only:
     - master
   script:
-    - export VK_PROTECTED_KEY=$CI_VK_PROTECTED_KEY
-    - export VK_APP_TOKEN=$CI_VK_APP_TOKEN
-    - ./build/run-build
-    - ./build/run
+    -  ./build/run-build
   tags:
-    - production
+    - kubernetes
+
+deploy_prod_k8s:
+  stage: production
+  image: lwolf/helm-kubectl-docker:latest
+  only:
+    - master
+  script:
+    - ./build/run-k8s
+  tags:
+    - kubernetes

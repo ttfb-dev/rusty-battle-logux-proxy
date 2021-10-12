@@ -9,5 +9,6 @@ docker network create network || true
 export COMPOSE_FILE=docker-compose.yml
 export COMPOSE_PROJECT_NAME=robots-logux-proxy
 
-docker-compose build
-docker-compose push
+docker login -u gitlab-ci-token -p $CI_BUILD_TOKEN registry.gitlab.com
+docker build -f ./build/nodejs/Dockerfile -t "registry.gitlab.com/robots-miniapp/logux-proxy/logux-proxy:nodejs-14_$CI_COMMIT_SHORT_SHA" ./
+docker push "registry.gitlab.com/robots-miniapp/logux-proxy/logux-proxy:nodejs-14_$CI_COMMIT_SHORT_SHA"
