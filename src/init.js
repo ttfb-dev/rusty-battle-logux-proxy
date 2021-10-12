@@ -4,9 +4,6 @@ import { isVkAuthorized } from './midlewares';
 
 const isProd = process.env.NODE_ENV === 'production';
 
-delete process.env['LOGUX_PROXY_NODEJS_SERVICE_HOST'];
-console.log(process.env);
-
 const server = new Server(
   Server.loadOptions(process, {
     host: isProd ? '0.0.0.0' : '127.0.0.1',
