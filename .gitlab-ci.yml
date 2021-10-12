@@ -16,7 +16,7 @@ build_images_for_k8s:
     - master
   script:
     - ls -la build
-    -  ./build/run-build
+    -  build/run-build
   tags:
     - docker
 
@@ -26,6 +26,6 @@ deploy_prod_k8s:
   only:
     - master
   script:
-    - ./build/run-k8s
+    - build/run-k8s
   tags:
     - docker
