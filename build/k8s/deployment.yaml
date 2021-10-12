@@ -23,8 +23,8 @@ spec:
         name: K8S_PROJECT_NAME-nodejs
     spec:
       containers:
-        - name: api-gw-nodejs
-          image: registry.readyforsky.com/web_projects/spacecats/api-gw:nodejs-14_K8S_IMAGE_TAG
+        - name: logux-proxy-nodejs
+          image: registry.gitlab.com/robots-miniapp/logux-proxy/logux-proxy:nodejs-14_K8S_IMAGE_TAG
           imagePullPolicy: Always
           resources:
             limits:
