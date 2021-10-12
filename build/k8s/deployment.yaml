@@ -35,7 +35,7 @@ spec:
               cpu: "250m"
           ports:
             - name: http
-              containerPort: 80
+              containerPort: 31337
               protocol: TCP
           env:
             - name: VK_PROTECTED_KEY

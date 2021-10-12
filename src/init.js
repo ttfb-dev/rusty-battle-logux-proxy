@@ -16,12 +16,8 @@ const server = new Server(
   }),
 );
 
-const clientPool = [];
-
 server.auth(async ({ client, userId, token }) => {
-  console.log('connected');
   const isAuthorized = isVkAuthorized(userId, token);
-  console.log(`isAuthorized: ${isAuthorized}`);
   return isAuthorized;
 });
 
