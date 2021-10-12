@@ -45,3 +45,5 @@ spec:
                   key: vk_protected_key
             - name: NODE_ENV
               value: "production"
+            - name: RUSTY_API_HOST
+              value: "http://rusty-api-nginx.rusty-api-prod.svc.cluster.local"

@@ -6,7 +6,6 @@ image: docker:git
 services:
   - docker:dind
 
-
 build_images_for_k8s:
   stage: build
   only:

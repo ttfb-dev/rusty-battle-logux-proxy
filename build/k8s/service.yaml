@@ -5,7 +5,7 @@ metadata:
   namespace: K8S_NAMESPACE
 spec:
   ports:
-  - port: 80
-    targetPort: 80
+  - port: 31337
+    targetPort: 31337
   selector:
     name: K8S_PROJECT_NAME-nodejs

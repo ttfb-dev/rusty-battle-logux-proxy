@@ -3,7 +3,7 @@ import fetch from 'node-fetch';
 class Api {
 
   constructor () {
-    this.host = 'http://rusty-api-nginx';
+    this.host = process.env.RUSTY_API_HOST;
     this.source = 'vk'
   }
 

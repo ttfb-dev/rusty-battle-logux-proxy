@@ -14,4 +14,4 @@ spec:
           - path: /
             backend:
               serviceName: K8S_PROJECT_NAME-nodejs
-              servicePort: 80
+              servicePort: 31337
