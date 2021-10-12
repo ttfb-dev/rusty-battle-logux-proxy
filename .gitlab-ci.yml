@@ -2,6 +2,13 @@ stages:
   - build
   - production
 
+image: docker:git
+services:
+  - docker:dind
+variables:
+  DOCKER_DRIVER: overlay2
+  DOCKER_HOST: tcp://localhost:2375
+  DOCKER_TLS_CERTDIR: ""
 
 build_images_for_k8s:
   stage: build
@@ -10,7 +17,7 @@ build_images_for_k8s:
   script:
     -  ./build/run-build
   tags:
-    - production
+    - docker
 
 deploy_prod_k8s:
   stage: production
@@ -20,4 +27,4 @@ deploy_prod_k8s:
   script:
     - ./build/run-k8s
   tags:
-    - production
+    - docker
