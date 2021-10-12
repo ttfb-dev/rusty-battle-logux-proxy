@@ -4,6 +4,8 @@ import { isVkAuthorized } from './midlewares';
 
 const isProd = process.env.NODE_ENV === 'production';
 
+console.log(process);
+
 const server = new Server(
   Server.loadOptions(process, {
     host: isProd ? '0.0.0.0' : '127.0.0.1',
