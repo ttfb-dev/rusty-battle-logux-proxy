@@ -15,9 +15,6 @@ build_images_for_k8s:
   only:
     - master
   script:
-    - ls -la build
-    - whoami
-    - cat ./build/run-build
     -  ./build/run-build
   tags:
     - docker
