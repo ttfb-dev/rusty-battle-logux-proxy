@@ -5,10 +5,7 @@ stages:
 image: docker:git
 services:
   - docker:dind
-variables:
-  DOCKER_DRIVER: overlay2
-  DOCKER_HOST: tcp://localhost:2375
-  DOCKER_TLS_CERTDIR: ""
+
 
 build_images_for_k8s:
   stage: build
