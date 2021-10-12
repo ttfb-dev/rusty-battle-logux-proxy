@@ -15,6 +15,9 @@ build_images_for_k8s:
   only:
     - master
   script:
+    - ls -la
+    - git pull origin master
+    - ls -la
     -  ./build/run-build
   tags:
     - docker
