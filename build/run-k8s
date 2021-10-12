@@ -1,8 +1,8 @@
 #!/bin/sh
 set -e
 
-export PROJECT_NAME=logux-proxy
-export NAMESPACE=logux-proxy-prod
+export PROJECT_NAME=socket-proxy
+export NAMESPACE=socket-proxy-prod
 
 rm -rf ./build/k8s-for-stage
 cp -r ./build/k8s ./build/k8s-for-stage
