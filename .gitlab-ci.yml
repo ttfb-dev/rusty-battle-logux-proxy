@@ -17,7 +17,7 @@ build_images_for_k8s:
   script:
     -  ./build/run-build
   tags:
-    - kubernetes
+    - production
 
 deploy_prod_k8s:
   stage: production
@@ -27,4 +27,4 @@ deploy_prod_k8s:
   script:
     - ./build/run-k8s
   tags:
-    - kubernetes
+    - production
