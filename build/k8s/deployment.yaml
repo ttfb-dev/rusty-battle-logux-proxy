@@ -37,3 +37,11 @@ spec:
             - name: http
               containerPort: 80
               protocol: TCP
+          env:
+            - name: VK_PROTECTED_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: rusty-vk-cred
+                  key: vk_protected_key
+            - name NODE_ENV:
+              value: "production"
