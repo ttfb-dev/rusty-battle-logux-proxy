@@ -43,5 +43,5 @@ spec:
                 secretKeyRef:
                   name: rusty-vk-cred
                   key: vk_protected_key
-            - name NODE_ENV:
+            - name: NODE_ENV
               value: "production"
