@@ -9,10 +9,7 @@ class Api {
 
   async startBattle(userId) {
     return await this.post({
-      path: `/v1/battle?source=${this.source}`,
-      data: {
-        user_ids: [userId]
-      },
+      path: `/v1/battle?source=${this.source}&user_id=${userId}`,
       method: 'startBattle',
     })
   }
