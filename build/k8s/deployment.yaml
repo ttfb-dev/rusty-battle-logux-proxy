@@ -43,6 +43,11 @@ spec:
                 secretKeyRef:
                   name: rusty-vk-cred
                   key: vk_protected_key
+            - name: VK_APP_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: rusty-vk-cred
+                  key: vk_app_token
             - name: NODE_ENV
               value: "production"
             - name: RUSTY_API_HOST
