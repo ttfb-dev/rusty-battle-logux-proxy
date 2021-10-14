@@ -1,5 +1,4 @@
-// import api from '../libs/api'
-import api from '../libs/apiv2'
+import api from '../libs/api'
 
 const profile = (server) => {
 
